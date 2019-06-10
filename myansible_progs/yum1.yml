@@ -1,0 +1,11 @@
+- hosts: 192.168.43.65
+  tasks:
+        
+      - name: create yum using file transfer 
+        copy:
+            src:  "/root/yum.repo"
+            dest: "/etc/yum.repos.d/"
+        
+
+      - name: checking that yum configure properly or not
+        command: "yum repolist"

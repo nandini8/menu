@@ -1,0 +1,62 @@
+- hosts: localhost
+  vars_prompt:
+        - name: folder 
+          prompt: "enter a directory/ folder of ur daatnode"
+  tasks:
+ 
+        
+       - name: copy file jdk software
+         copy:
+                src: "/root/Desktop/jdk-8u171-linux-x64.rpm"
+                dest: "/root/Desktop"
+       - name: copy hadoop file rpm software
+         copy: 
+                src: "/root/Desktop/hadoop-1.2.1-1.x86_64.rpm"
+                dest: "/root/Desktop"
+        
+       - name: command for install the jdk software
+         package: 
+                name: /root/Desktop/jdk-8u171-linux-x64.rpm
+                state: present
+
+       - name: for setting path of jdk software and permanent it 
+         lineinfile:
+                path: /root/.bashrc
+                line: "export JAVA_HOME=/usr/java/jdk1.8.0_171-amd64/"
+                create: yes
+
+       - name: permanent  path
+         lineinfile:
+                path: /root/.bashrc
+                line: "export PATH=/usr/java/jdk1.8.0_171-amd64/bin/:/usr/java/jdk-8u171-linux-x64.rpm/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/root/bin" 
+                create: yes
+       - name: for installing hadoop software
+         package: 
+                name: /root/Desktop/hadoop-1.2.1-1.x86_64.rpm
+                state: present
+       - name: entry of data file
+         command: mkdir /"{{folder}}"
+      
+       - name: configure some data node file
+         template:
+                src: "/etc/hadoop/hdfs-site.xml"
+                dest: "/etc/hadoop/hdfs-site.xml"
+       - name:
+         copy:
+                src: "/etc/hadoop/core-site.xml"
+                dest: "/etc/hadoop/core-site.xml"
+
+
+       - name: start your datanode for having part of hadoop cluster
+         command: "hadoop-daemon.sh start datanode"
+
+       - name: Disable your firewall for disable security
+         command: "iptables -F"
+       
+       - name: check your data node start or not
+         command: "jps"
+
+
+ 
+
+        

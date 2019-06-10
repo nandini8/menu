@@ -1,0 +1,13 @@
+- hosts: localhost
+  tasks:
+       - pip:
+             name: docker-py
+             state: present
+       - docker_container:
+             name: "mydocker"
+             state: present
+             image: "centos"
+            
+              
+
+

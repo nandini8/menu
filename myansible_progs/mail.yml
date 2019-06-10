@@ -1,0 +1,16 @@
+- hosts: localhost
+  vars_files:
+      - secure.yml
+         
+          
+  tasks:
+     - mail:
+          host: "smtp.gmail.com"
+          port: 587
+          username: "kggupta2211@gmail.com"
+          password: "{{ password }}"
+          to: "rggupta221198@gmail.com"
+          subject: "Hello-ansible"
+          body: 'system  take mail'
+        
+

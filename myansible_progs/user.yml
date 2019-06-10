@@ -1,0 +1,14 @@
+- hosts: myown
+  vars_prompt:
+        - name: username
+          prompt: "enter user"
+
+
+        - name: password
+          prompt: "enter passwd for user"
+  tasks:
+        - user: 
+                name: "{{ username}}"
+                state: present
+                password: "{{password}}"
+                shell: "/bin/bash"

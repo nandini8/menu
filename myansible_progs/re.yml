@@ -1,0 +1,5 @@
+- hosts: localhost
+  tasks:
+   - pip: 
+       name: boto
+       state: present

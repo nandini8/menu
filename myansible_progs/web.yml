@@ -1,0 +1,19 @@
+- hosts: all 
+  tasks:        
+    - package:
+          name: "httpd"
+          state: present
+    - copy: 
+          src: "/root/rahul.html"
+          dest: "/var/www/html/"
+    - service: 
+          name: "httpd"
+          state: present
+          enabled: yes
+    - firewalld: 
+          state: enabled        
+          port: "80/tcp"
+          permanent: yes
+          immediate: yes
+                       
+       

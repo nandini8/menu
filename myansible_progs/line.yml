@@ -1,0 +1,11 @@
+- hosts: localhost
+  tasks: 
+       - lineinfile:
+                path: /root/my.txt
+                line: "export JAVA_HOME=/usr/java/jdk-8u171-linux-x64.rpm"
+                create: yes
+       - lineinfile:
+                path: /root/my.txt
+                line: "export PATH=usr/java/jdk-8u171-linux-x64.rpm/bin:$PATH"
+                create: yes
+

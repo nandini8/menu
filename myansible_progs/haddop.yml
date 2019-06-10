@@ -1,0 +1,9 @@
+- hosts:
+  vars_prompt:
+        - name: ip_addr
+          prompt: "enter ip"
+  tasks:
+        - package: 
+                name: "httpd"
+                state: present
+  

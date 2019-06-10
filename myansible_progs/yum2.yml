@@ -1,0 +1,17 @@
+- hosts:
+  tasks:
+        - name: creating yum 
+          mount:
+             path: /dvd
+             src: /dev/cdrom
+             fstype: iso9660
+             opts: ro,noauto
+             state: mounted
+        - name: creating yum repo
+
+          name:
+             name: yum
+             description: local dvd repo
+             baseurl: "file:///dvd"
+             enabled: yes
+             gpgcheck: no
