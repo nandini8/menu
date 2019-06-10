@@ -1,0 +1,22 @@
+- hosts: all
+  environment:
+    PYTHONPATH: "{{ lookup('env','PYTHONPATH') }}:/usr/local/lib/python2.7/dist-packages:/usr/local/lib/python2.7/site-packages"
+  tasks:
+   - package:
+       name: 'docker-ce'
+       state: present
+   - service:
+       name: 'docker'
+       state: started
+   - pip:
+       name: 'docker-py==1.10.6'
+       state: present
+   - pip:
+       name: 'requests'
+       state: present
+   - pip:
+       name: 'urllib3'
+       state: present
+   - docker_container:
+       name: 'ans_cent'
+       image: 'centos'

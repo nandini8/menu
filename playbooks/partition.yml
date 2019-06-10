@@ -1,0 +1,26 @@
+- hosts: all
+  vars_prompt:
+     - name: dev_name
+       prompt: "Enter partition name"
+       private: no
+     - name: path
+       prompt: "Enter path to mount" 
+       private: no
+     - name: part_n
+       prompt: "Enter partition number"
+       private: no
+  tasks:
+     - parted:
+        device: '/dev/sdb'
+        number: '{{ part_n }}'
+        part_start: 500MiB
+        part_end: 15%
+        state: present
+     - filesystem:
+        fstype: 'ext4'
+        dev: '{{ dev_name }}'
+     - mount:
+        fstype: 'ext4'
+        src: '{{ dev_name }}'
+        path: '{{ path }}'
+        state: mounted

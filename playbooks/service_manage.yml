@@ -1,0 +1,11 @@
+- hosts: '{{ host }}'
+  remote_user: 'ec2-user'
+  become: True
+  tasks:
+    - package:
+        name: "{{ service }}"
+        state: present
+    - service:
+        name: "{{ service }}"
+        state: "{{ states }}"
+

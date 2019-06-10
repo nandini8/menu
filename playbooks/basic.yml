@@ -1,0 +1,7 @@
+- hosts: all
+  vars:
+    - x: 10
+  tasks:
+    - copy:
+        content: "This is data {{ x }}\n"
+        dest: '/home/config_user/dvd3/abc.txt'
