@@ -1,0 +1,3 @@
+- hosts: localhost
+  tasks: 
+   - s3: bucket=lwbucket1 object=/my/desired/key.txt src src=/usr/local/myfile.txt mode=put

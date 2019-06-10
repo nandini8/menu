@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+    - ec2:
+         aws_access_key: AKIA5556RM3IV6W3NOZH
+         aws_secret_key: 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
+         #key_name: parag_AmazonLinuxkey.pem
+         instance_type: t2.micro
+         image: ami-5b673c34
+         #wait: yes
+         #group: webserver
+         #count: 1
+         #vpc_subnet_id: subnet-
+         #assign_public_ip: yes
+         region: ap-south-1

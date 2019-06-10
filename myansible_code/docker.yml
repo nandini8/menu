@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+#    - name: log into docker hub registry
+    - docker_login:
+        email: :aimybansal@gmail.com"
+        username: "ab7733033939"
+        password: "aman@1998"
+#   - name: ensure a container is running
+    - docker_container:
+        name: my_container
+        image: "my_username/my_container:master-latest"
+        pull: true
+        ports:
+         - "5000:5000"
+
