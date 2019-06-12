@@ -1,0 +1,17 @@
+- hosts: local
+  vars_files:
+   - creds.yml 
+  tasks:
+   - pip:
+        name: boto3
+        state: present
+   - pip:
+        name: botocore
+        state: present
+   - name: Create a bucket
+     aws_s3:
+      aws_access_key: "{{ access_key }}"
+      aws_secret_key: "{{ secret_key }}"
+      bucket: d11062019
+      mode: create
+      

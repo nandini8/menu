@@ -1,0 +1,13 @@
+- hosts: local
+  tasks:
+   - mount:
+      path: /dvd
+      src: /dev/cdrom
+      fstype: iso9660
+      state: present
+   - name: Add repository
+     yum_repository:
+      name: dvd
+      description: dvd YUM repo
+      baseurl: file:///dvd
+      gpgcheck: no

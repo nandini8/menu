@@ -1,0 +1,14 @@
+- hosts: all 
+  vars_files:
+   - creds.yml
+  tasks:  
+   - mail: 
+      host: smtp.gmail.com
+      port: 587
+      secure: starttls
+      charset: utf-8
+      username: "phackathon2018@gmail.com"
+      password: "{{ gmail_pass }}"
+      to: Nandini Soni <nandini.soni845@gmail.com>
+      subject: field work 
+      body: Ansible body

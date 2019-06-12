@@ -1,0 +1,14 @@
+- hosts: local
+  vars_files:
+    - creds.yml
+  tasks:
+    - pip:
+         name: boto
+         state: present
+    - ec2:
+         aws_access_key: "{{ access_key }}"
+         aws_secret_key: "{{ secret_key }}"
+         instance_type: t2.micro
+         image: ami-5b673c34
+         count: 1
+         region: ap-south-1

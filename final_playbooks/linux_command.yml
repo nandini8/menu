@@ -1,0 +1,4 @@
+- hosts: '{{ host }}'
+  tasks:
+    - command: "{{ commands }}"
+        
